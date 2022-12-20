@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form>
+      <label>Username:</label>
+      <input type="text" id="username" />
+      <br />
+      <label>Password:</label>
+      <input type="password" id="password" />
+      <br />
+      <button type="button" onclick="checkCredentials()">Login</button>
+    </form>
+
+    <script>
+      function checkCredentials() {
+        // Get the values of the username and password fields
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Hardcoded correct username and password
+        var correctUsername = "admin";
+        var correctPassword = "password";
+
+        if (username === correctUsername && password === correctPassword) {
+          alert("Login successful!");
+
+          // Redirect the user to the "kaas.nl" website
+          window.location.href = "https://kaas.nl";
+        } else {
+          alert("Incorrect username or password. Please try again.");
+        }
+      }
+    </script>
+  </body>
+</html>

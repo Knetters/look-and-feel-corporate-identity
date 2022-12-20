@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <title>Code the curbs | Smartzones</title>
+    <meta name="description" content="Smartzones" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+</head>
+
+<body>
+    <section class="reserve-menu">
+        <div class="reserve-content">
+            <h4>Reserveren</h4>
+            <div class="date-time">
+            <div class="date">03-11</div>
+            <div class="time">03-11</div>
+        </div>
+        </div>
+
+    </section>
+
+    <!-- <section  class="inlog">
+            <div class="login-box">
+                <h2 class="heading-inlog h2-margin">Login</h2>
+                <form id="form_id" method="post" name="myform">
+                    <input type="text" name="username" id="username" placeholder="Gebruikersnaam" required/>
+                    <input type="password" name="password" id="password" placeholder="Wachtwoord" required/>
+                    <input class="white-btn" type="button" value="Login" id="submit" onclick="validate()"/>
+                </form>
+            </div>
+            <div class="intro-box">
+                <h2 class="heading-inlog">Welkom bij Coding the Curbs!</h2>
+                <p class="p-inlog">Coding the Curbs spreidt het gebruik van beschikbare plekken en zorgt daardoor dat de schaarse ruimte in binnensteden beter wordt benut. Door het beter plannen worden er 20% minder kilometers afgelegd. Logistieke ritten worden effectiever.</p>
+            </div> -->
+    </section>
+
+    <div class="alles">
+        <header class="main-header">
+            <img class="logo" src="./assets/logo-03.png" alt="Logo Coding the Curbs" />
+        </header>
+
+        <div class="ondergrond">
+            <!--Info tab 1-->
+            <section id="1" class="slide">
+                <div class="preview-tab">
+                    <img class="preview-img" id="details-map" src="./assets/Foto_02.jpg"
+                        alt="Chauffeur met transport busje" />
+                </div>
+                <div class="info-tab">
+                    <div class="header-content">
+                        <div class="content-row">
+                            <div class="info-item">
+                                <p><span class="smart-funtcion">Parkeren</span></p>
+                            </div>
+                            <div class="info-item right">
+                                <p>
+                                    <span>
+                                        <button name="Ga terug" onclick="closeSlide()"
+                                            class="close-button js-more-info">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <h2 class="smart-title">Tijn</h2>
+                        <p class="smart-city">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i> Twijnstraat
+                            26, <br> Utrecht
+                        </p>
+                    </div>
+                    <div class="gray-back">
+                        <div class="content-row">
+                            <div class="info-item">
+                                <p class="info-title">Gebruikt</p>
+                                <p class="info-content">48%</p>
+                            </div>
+                            <div class="info-item">
+                                <p class="info-title">Grootte</p>
+                                <p class="info-content">1,5 plek</p>
+                            </div>
+                            <div class="info-item">
+                                <p class="info-title">Tijden</p>
+                                <p class="info-content">07:00 - 17:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-text-row">
+                        <p class="info-title">Beschrijving</p>
+                        <p class="info-content">Eerste Smart Zone in Nederland</p>
+                    </div>
+                    <div class="button-row">
+                        <a class="route-link"
+                            href="https://www.google.com/maps/dir//Twijnstraat+26,+3511+ZL+Utrecht/@52.0830209,5.1235336,17z/data=!4m17!1m7!3m6!1s0x47c66f5709453a2d:0xeddeff6c8e693f0a!2sTwijnstraat+26,+3511+ZL+Utrecht!3b1!8m2!3d52.0830209!4d5.1235336!4m8!1m0!1m5!1m1!1s0x47c66f5709453a2d:0xeddeff6c8e693f0a!2m2!1d5.1235336!2d52.0830209!3e3"><button
+                                id="route-btn" class="route-btn">route</button></a>
+                        <button name="Lacatie Smartzone" class="locate-btn" onClick="javascript:locateSmartzone1();">
+                            <i class="fa fa-location-arrow"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Desktop view -->
+        <main>
+            
+            <aside class="sidebar">
+                <div class="logo-container">
+                    <img src="./assets/CTC - Logo Extended Purple.png" alt="Logo van Coding the curbs" height="80px" />
+                </div>
+                <div class="smartzones-container-fav">
+                    <p class="small-text">FAVORIETEN</p>
+
+                    <button onclick="locateSmartzone1();loadInfoTab(1);" class="smartzone-box" id="zone-1" tabindex="0">
+                        <div class="smartzone-info">
+                            <h4>
+                                Tijn
+                                <span class="status-marker beschikbaar"><i class="fa fa-circle"></i></span>
+                            </h4>
+                            <p class="smart-city2">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 26, Utrecht
+                            </p>
+                        </div>
+                    </button>
+
+                    <button onclick="locateSmartzone2();loadInfoTab(2);" class="smartzone-box" id="zone-2">
+                        <div class="smartzone-info">
+                            <h4>
+                                Sarah
+                                <span class="status-marker bezet"><i class="fa fa-circle"></i></span>
+                            </h4>
+                            <p class="smart-city2">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 22, Utrecht
+                            </p>
+                        </div>
+                    </button>
+
+                    <!-- Hier komt data uit het json bestand -->
+                </div>
+                
+                <div class="smartzones-container">
+                    <p class="small-text">SMARTZONES</p>
+                    <!-- Hier komt data uit het json bestand -->
+                </div>
+                <div class="smartzones-container-result">
+                    <p class="small-text">ZOEKRESULTAAT</p>
+                    <!-- Hier komt data uit het json bestand -->
+                </div>
+            </aside>
+            <section class="desktop-info-tab">
+                <!-- Hier komt data uit het json bestand -->
+            </section>
+            <nav class="desktop-nav">
+                
+                <div class="desktop-search-container">
+                    <input id="userInput" onkeypress="returnSearch();" type="text">
+                    <img class="search-bar-icon" src="assets/icon-02.svg" alt="Zoeken">
+                </div>
+            </nav>
+        </main>
+
+        <div id="map"></div>
+        <div class="gradient"></div>
+        <div class="flexcon">
+            <div id="flex-scroll">
+                
+                <!-- Hier komt data uit het json bestand -->
+            </div>
+        </div>
+
+        <section class="overview">
+            <h3>Overzicht</h3>
+            <div class="infoview">
+                <h5 class="plaatsnaam">Utrecht</h5>
+                <a class="fakebutton" href="google.com">
+                    <ul class="listutrecht">
+                        <li class="listutrechtitem">
+                            <div class="itemutrecht">
+                                <img class="listicon" src="assets/Foto_01.jpg" alt="Parkerende transport bus" />
+                            </div>
+                            <div class="listtext">
+                                <h5 class="infotext">Tijn</h5>
+                                <p class="infosub">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    Twijnstraat 26
+                                </p>
+                            </div>
+
+                            <img class="play" src="assets/play-06.svg" alt="" />
+                        </li>
+                    </ul>
+                </a>
+
+                <ul class="listutrecht">
+                    <li class="listutrechtitem">
+                        <div class="itemutrecht">
+                            <img class="listicon" src="assets/Foto_02.jpg" alt="Chauffeur" />
+                        </div>
+                        <div class="listtext">
+                            <h5 class="infotext">Sarah</h5>
+                            <p class="infosub">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 22
+                            </p>
+                        </div>
+
+                        <img class="play" src="assets/play-06.svg" alt="Smartzone Beschrijving" />
+                    </li>
+                </ul>
+
+                <h5 class="plaatsnaam">Schiedam</h5>
+                <ul class="listutrecht">
+                    <li class="listutrechtitem">
+                        <div class="itemutrecht">
+                            <img class="listicon" src="assets/Foto_03.jpg" alt="My Happy SVG" />
+                        </div>
+                        <div class="listtext">
+                            <h5 class="infotext">Tijn</h5>
+                            <p class="infosub">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 26,
+                            </p>
+                        </div>
+
+                        <img class="play" src="assets/play-06.svg" alt="" />
+                    </li>
+                </ul>
+
+                <ul class="listutrecht">
+                    <li class="listutrechtitem">
+                        <div class="itemutrecht">
+                            <img class="listicon" src="assets/Foto_04.jpg" alt="Feestje op de parkeerplaats" />
+                        </div>
+                        <div class="listtext">
+                            <h5 class="infotext">Tijn</h5>
+                            <p class="infosub">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 26,
+                            </p>
+                        </div>
+
+                        <img class="play" src="assets/play-06.svg" alt="" />
+                    </li>
+                </ul>
+
+                <h5 class="plaatsnaam">Amsterdam</h5>
+                <ul class="listutrecht">
+                    <li class="listutrechtitem">
+                        <div class="itemutrecht">
+                            <img class="listicon" src="assets/Foto_05.jpg" alt="Feestje op de parkeerplaats 2" />
+                        </div>
+                        <div class="listtext">
+                            <h5 class="infotext">Tijn</h5>
+                            <p class="infosub">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 26,
+                            </p>
+                        </div>
+
+                        <img class="play" src="assets/play-06.svg" alt="" />
+                    </li>
+                </ul>
+
+                <ul class="listutrecht">
+                    <li class="listutrechtitem">
+                        <div class="itemutrecht">
+                            <img class="listicon" src="assets/Foto_06.jpg" alt="Smartzone bord" />
+                        </div>
+                        <div class="listtext">
+                            <h5 class="infotext">Tijn</h5>
+                            <p class="infosub">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 26,
+                            </p>
+                        </div>
+
+                        <img class="play" src="assets/play-06.svg" alt="" />
+                    </li>
+                </ul>
+
+                <h5 class="plaatsnaam">Rotterdam</h5>
+                <ul class="listutrecht">
+                    <li class="listutrechtitem">
+                        <div class="itemutrecht">
+                            <img class="listicon" src="assets/Foto_07.jpg" alt="CdC app op telefoon" />
+                        </div>
+                        <div class="listtext">
+                            <h5 class="infotext">Tijn</h5>
+                            <p class="infosub">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 26,
+                            </p>
+                        </div>
+
+                        <img class="play" src="assets/play-06.svg" alt="" />
+                    </li>
+                </ul>
+
+                <ul class="listutrecht">
+                    <li class="listutrechtitem">
+                        <div class="itemutrecht">
+                            <img class="listicon" src="assets/Foto_08.jpg" alt="Lachende mensen aan een tafel" />
+                        </div>
+                        <div class="listtext">
+                            <h5 class="infotext">Tijn</h5>
+                            <p class="infosub">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Twijnstraat 26,
+                            </p>
+                        </div>
+
+                        <img class="play" src="assets/play-06.svg" alt="" />
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <div class="bottom-nav">
+                <div class="iconen">
+                    <button class="js-search">
+                        <img class="bottomicons" src="assets/icon-02.svg" alt="Zoeken" />
+                    </button>
+                    <img class="bottomicons" onClick="javascript:getLocationLeaflet();" src="assets/icon-03.svg"
+                        alt="Huidige locatie" />
+                    <img class="bottomicons" src="assets/icon-04.svg" alt="Favorieten" />
+                    <button class="js-up">
+                        <img class="bottomicon4" src="assets/icon-05.svg" alt="Overzicht" />
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+        <script src="./scripts/map.js"></script>
+        <script src="./scripts/script.js"></script>
+    </div>
+</body>
+
+</html>

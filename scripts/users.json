@@ -1,0 +1,17 @@
+[
+    {
+    "smartzoneId": 1,
+    "name": "admin",
+    "password": "admin"
+    },
+    {
+    "smartzoneId": 2,
+    "name": "Milan",
+    "password": "kaas"
+    },
+    {
+    "smartzoneId": 3,
+    "name": "Thomas",
+    "password": "worst"
+    }
+]
